@@ -1,10 +1,14 @@
 const WebSocket = require('ws');
 const tempData = require('./data.js');
 const zlib = require('zlib');
+const dotenv = require('dotenv');
 
+dotenv.config();
+const URL = process.env.URL || 'ws://localhost:8080';
+console.log(URL);
 // Create a WebSocket server
 const wss = new WebSocket.Server({ port: 8080 }, () => {
-  console.log('WebSocket server is running on ws://localhost:8080');
+  console.log(`WebSocket server is running on ${URL}`);
 });
 
 // Handle WebSocket server events
